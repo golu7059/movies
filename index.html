@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie-Bazzar</title>
+    <!-- adding css file  -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="free_space"></div>
+      <h1>Welcome ! To Movie Bazzar</h1>
+      <h2>Search Movie</h2>
+
+      <div class="search">
+        <input type="text" id="search-input" placeholder="Search here" />
+        <img
+          src="https://static-00.iconduck.com/assets.00/search-icon-2044x2048-psdrpqwp.png"
+          title="Search"
+          alt="Search"
+        />
+      </div>
+
+      <div class="empty">
+        <h2>No Movies Found</h2>
+        <img
+          src="https://cdn-icons-png.flaticon.com/256/7295/7295199.png"
+          alt=""
+        />
+        <div class="non"></div>
+
+        <!-- report button  -->
+        <button class="open-button" onclick="openForm()">Report</button>
+
+        <div class="chat-popup" id="myForm">
+          <form action="/action_page.php" class="form-container">
+            <label for="msg"><b>Message</b></label>
+            <textarea
+              placeholder="Report a missing movie .."
+              name="msg"
+              required
+            ></textarea>
+
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">
+              Close
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- adding js file  -->
+    <script src="./script.js"></script>
+  </body>
+</html>
