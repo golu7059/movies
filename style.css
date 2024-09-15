@@ -3,7 +3,8 @@
 
 * {
   margin: 0;
-  border: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 :root {
@@ -11,295 +12,124 @@
   --font-raleway: "Raleway", sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
+body {
+  background-color: #212426;
+  color: #d0d7dd;
+  text-align: center;
 }
-.free_space{
-  height: 15px;
+
+h1, h2 {
+  margin: 12px 0;
 }
-h1{
-    margin: 12px 0px;
-    font-size: 3rem;
-   letter-spacing: 0.9px;
-  background: linear-gradient(
-    90deg,
-    rgb(255, 255, 255) 0%,
-    rgba(213, 241, 248,0.3) 100%
-  );
+
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #fff 0%, rgba(213, 241, 248, 0.3) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  width: fit-content;
   margin-top: 30px;
-  margin: auto;
 }
 
-h2{
-    margin: 12px 0px;
+.search {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
 }
 
-body{
-    /* background-color: #0c0b0f; */
-    background-color: #212426;
-    text-align: center;
-    color: #d0d7dd;
-    /* box-sizing: border-box; */
+.search input {
+  width: 30vw;
+  padding: 10px;
+  border-radius: 12px;
+  margin-right: 10px;
+  font-size: large;
+  font-weight: 550;
 }
 
-.search{
-    position: sticky;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search input{
-    width: 30vw;
-    height: 20px;
-    padding: 10px;
-    border: none;
-    outline: none;
-    border-radius: 12px;
-    margin-right: 25px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: large;
-    font-weight: 550;
-    
-}
-
-.search img{
-    height: 40px;
-    width: 40px;
-}
-.search img:hover{
-    cursor: pointer;
+.search img {
+  width: 40px;
+  cursor: pointer;
 }
 
 .empty {
-  width: 100%;
-  margin-top: 3rem;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: none;
 }
-.empty h2 {
-  font-size: 1.25rem;
-  color: #f9d3b4;
-  font-family: var(--font-raleway);
+
+.loading {
+  margin-top: 2rem;
 }
 
 .container {
-  width: 100%;
-  margin-top: 3rem;
-
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .movie {
   width: 310px;
-  height: 460px;
-  margin: 1.5rem;
-
+  margin: 20px;
   position: relative;
   border-radius: 12px;
-  overflow: hidden;
-  border: none;
-
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0, 1);
+  transition: transform 0.4s;
   box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
 }
 
-.movie div:nth-of-type(1) {
-  position: absolute;
-  padding: 16px;
-  width: 100%;
-  opacity: 0;
-  top: 0;
-  color: #f9d3b4;
-}
-
-
 .movie:hover {
-  box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
-  transform: scale(1.05, 1.05);
+  transform: scale(1.05);
 }
 
-.movie div:nth-of-type(2) {
+.movie img {
   width: 100%;
   height: 100%;
 }
-
-.movie div:nth-of-type(2) img {
-  height: 100%;
-  width: 100%;
-}
-
-.movie div:nth-of-type(3) {
-  /* z-index: 2; */
-  background-color: #343739;
-  padding: 16px 24px 24px 24px;
-
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-}
-
-.movie div:nth-of-type(3) span {
-  /* font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 500;
-  color: #f0f0f0; */
-}
-
-.movie div:nth-of-type(3) h3 {
-  margin-top: 5px;
-  font-family: "Roboto Slab", serif;
-  color: #f9d3b4;
-}
-
-.movie:hover div:nth-of-type(2) {
-  height: 100%;
-  /* opacity: 0.1; */
-}
-
-.movie:hover div:nth-of-type(3) {
-  font-family: "Raleway", sans-serif;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 2px;
-  font-weight: 500;
-  color: #f0f0f0;
-  transition-duration: 0.4s;
-}
-
-.movie:hover div:nth-of-type(1) {
-  opacity: 1;
-  transition-duration: 0.4s;
-  background-color: rgb(199, 48, 34);
-  text-align: center;
-}
-
-@media screen and (max-width: 600px) {
-  .app {
-    padding: 4rem 2rem;
-  }
-
-  .search {
-    padding: 1rem 1.75rem;
-    width: 100%;
-  }
-
-  .search input {
-    font-size: 1rem;
-  }
-
-  .search img {
-    width: 20px;
-    height: 20px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .app {
-    padding: 4rem 1rem;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  .container {
-    margin-top: 2rem;
-  }
-
-  .movie {
-    width: "100%";
-    margin: 1rem;
-  }
-}
-
-/* chat button here  */
-
 
 .open-button {
   background-color: #555;
   color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
+  padding: 16px;
+  border-radius: 8px;
   position: fixed;
   bottom: 23px;
   right: 28px;
-  width: 200px;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 500;
+  cursor: pointer;
 }
 
-/* The popup chat - hidden by default */
 .chat-popup {
   display: none;
   position: fixed;
   bottom: 0;
   right: 15px;
   border: 3px solid #f1f1f1;
-  z-index: 9;
 }
 
-/* Add styles to the form container */
 .form-container {
   max-width: 300px;
   padding: 10px;
   background-color: white;
-  color:rgb(12, 12, 12) ;
 }
 
-/* Full-width textarea */
 .form-container textarea {
   width: 90%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  border: none;
-  background: #f1f1f1;
   resize: none;
-  min-height: 200px;
 }
 
-/* When the textarea gets focus, do something */
-.form-container textarea:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-/* Set a style for the submit/send button */
 .form-container .btn {
-  background-color: #04AA6D;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
   width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+  padding: 16px;
 }
 
-/* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: red;
 }
 
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
+@media screen and (max-width: 600px) {
+  .search input {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  h1 {
+    font-size: 2rem;
+  }
 }
