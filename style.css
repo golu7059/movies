@@ -10,25 +10,28 @@
 :root {
   --font-roboto: "Roboto Slab", serif;
   --font-raleway: "Raleway", sans-serif;
+  --primary-bg: #1e1e2d;
+  --primary-text: #e0e6ed;
+  --secondary-bg: #313148;
+  --accent-color: #f39c12;
 }
 
 body {
-  background-color: #212426;
-  color: #d0d7dd;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  font-family: var(--font-raleway);
   text-align: center;
-}
-
-h1, h2 {
-  margin: 12px 0;
 }
 
 h1 {
   font-size: 3rem;
-  background: linear-gradient(90deg, #fff 0%, rgba(213, 241, 248, 0.3) 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--accent-color);
   margin-top: 30px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  color: var(--primary-text);
 }
 
 .search {
@@ -51,10 +54,6 @@ h1 {
   cursor: pointer;
 }
 
-.empty {
-  display: none;
-}
-
 .loading {
   margin-top: 2rem;
 }
@@ -63,24 +62,39 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 20px;
 }
 
 .movie {
-  width: 310px;
-  margin: 20px;
-  position: relative;
+  background-color: var(--secondary-bg);
   border-radius: 12px;
-  transition: transform 0.4s;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  width: 300px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
 .movie:hover {
   transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .movie img {
   width: 100%;
-  height: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.movie h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.movie p {
+  color: #b8b8d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .open-button {
@@ -120,16 +134,4 @@ h1 {
 
 .form-container .cancel {
   background-color: red;
-}
-
-@media screen and (max-width: 600px) {
-  .search input {
-    width: 80%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  h1 {
-    font-size: 2rem;
-  }
 }
