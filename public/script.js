@@ -10,27 +10,27 @@ let debounceTimeout;
 
 const searchMovies = async (title) => {
   try {
-    loading.style.display = "block";  
-    emptyContainer.style.display = "none";  
+    loading.style.display = "block";  // Show loading spinner
+    emptyContainer.style.display = "none";  // Hide 'No Movies Found'
+
     const movieResponse = await fetch(`${BASE_URL}?title=${title}`);
-   
     const movies = await movieResponse.json();
-    loading.style.display = "none"; 
+    loading.style.display = "none";  // Hide loading spinner
 
     if (movies.length === 0) {
-      emptyContainer.style.display = "block";  
-      document.querySelector(".container")?.remove();
+      emptyContainer.style.display = "block";  // Show 'No Movies Found' if no movies
+      document.querySelector(".container")?.remove(); // Remove previous movie results
     } else {
       displayMovies(movies);
     }
   } catch (error) {
-    loading.style.display = "none";
+    loading.style.display = "none";  // Hide loading on error
     console.error("Error fetching movies:", error);
   }
 };
 
 const displayMovies = (movies) => {
-  document.querySelector(".container")?.remove();
+  document.querySelector(".container")?.remove(); // Remove previous movie results
 
   const movieContainer = document.createElement("div");
   movieContainer.classList.add("container");
@@ -42,9 +42,9 @@ const displayMovies = (movies) => {
     movieCard.innerHTML = `
       <img src="${movie.Poster}" alt="${movie.Title}" />
       <h3>${movie.Title} (${movie.Year})</h3>
-      <p>Genre: ${movie.Genre}</p>
-      <p>Rating: ${movie.imdbRating}/10</p>
-      <p>${movie.Plot}</p>
+      <p>Genre: ${movie.Genre || "N/A"}</p>
+      <p>Rating: ${movie.imdbRating || "N/A"}/10</p>
+      <p>${movie.Plot || "No plot available"}</p>
     `;
 
     movieCard.addEventListener("click", () => {
@@ -57,6 +57,7 @@ const displayMovies = (movies) => {
   app.appendChild(movieContainer);
 };
 
+// Debounce for search input
 searchInput.addEventListener("input", () => {
   clearTimeout(debounceTimeout);
   debounceTimeout = setTimeout(() => {

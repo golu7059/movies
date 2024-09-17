@@ -1,19 +1,18 @@
-
 const express = require("express");
 const axios = require("axios");
-const app = express();
+const cors = require("cors");
 require("dotenv").config();
+
+const app = express();
 const port = process.env.PORT || 3000;
 const API_KEY = process.env.API_KEY;
-const _dirname = path.resolve();
 
-const cors = require('cors');
-app.use(cors()); // Add CORS support to avoid cross-origin issues
+app.use(cors()); // CORS support
 
-
+// Serve static files from the public folder
 app.use(express.static("public"));
 
-
+// Movie search endpoint
 app.get("/api/movies", async (req, res) => {
   const { title } = req.query;
   if (!title) {
@@ -30,16 +29,12 @@ app.get("/api/movies", async (req, res) => {
       res.status(404).json([]);
     }
   } catch (error) {
-    console.error("Error fetching from OMDb API:", error);
+    console.error("Error fetching from OMDb API:", error.message);
     res.status(500).json({ error: "An error occurred while fetching data" });
   }
 });
-// app.use(express.static(path.join(_dirname, "/frontend/build")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(_dirname + "/index.html"));
-});
-
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
