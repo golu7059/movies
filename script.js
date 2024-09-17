@@ -1,4 +1,4 @@
-const BASE_URL = `http://localhost:5011/api/movies`;
+const BASE_URL = `https://golu-movies.vercel.app/api/movies`;
 
 const app = document.querySelector(".app");
 const searchInput = document.getElementById("search-input");
